@@ -1,4 +1,4 @@
-import api from './api'
+import api from "../auth/axiosConfig";
 
 export const fetchWishlists = () => api.get('/wishlist/');
 export const fetchWishlist = (id) => api.get(`/wishlist/${id}`);

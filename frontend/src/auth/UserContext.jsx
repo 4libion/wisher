@@ -8,23 +8,24 @@ export const UserProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        const fetchUser = async () => {
-            if (!getAccessToken()) {
-                setLoading(false);
-                return;
-            }
+    const fetchUser = async () => {
+        if (!getAccessToken()) {
+            setLoading(false);
+            return;
+        }
 
-            try {
-                const res = await api.get('/user/me/');
-                setUser(res.data);
-            } catch (err) {
-                console.error("Failed to fetch user:", err);
-                logoutUser();
-            } finally {
-                setLoading(false);
-            }
-        };
+        try {
+            const res = await api.get('/user/me/');
+            setUser(res.data);
+        } catch (err) {
+            console.error("Failed to fetch user:", err);
+            logoutUser();
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
         fetchUser();
     }, []);
 
@@ -35,7 +36,7 @@ export const UserProvider = ({ children }) => {
     };
 
     return (
-        <UserContext.Provider value={{ user, setUser, logout, loading }}>
+        <UserContext.Provider value={{ user, setUser, logout, loading, fetchUser }}>
             {children}
         </UserContext.Provider>
     );

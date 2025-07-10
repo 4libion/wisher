@@ -1,0 +1,9 @@
+Django
+djangorestframework
+djangorestframework-simplejwt
+drf-spectacular
+psycopg2-binary
+django-cors-headers
+google-auth
+google-auth-oauthlib
+google-auth-httplib2

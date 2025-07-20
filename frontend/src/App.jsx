@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
 import Dashboard from './pages/Dashboard';
-import WishlistDetail from './pages/WishListDetail';
+import WishlistDetail from './pages/WishlistDetail';
 import PublicWishlistDetail from './pages/PublicWishlistDetail';
 import ProtectedRoute from './components/ProtectedRoute';
 import { UserProvider } from './auth/UserContext';

@@ -34,7 +34,9 @@ class WishlistItemListCreateView(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
+        wishlist_id = self.kwargs.get('pk')
         return WishlistItem.objects.filter(
+            wishlist__id=wishlist_id,
             wishlist__user=self.request.user,
             wishlist__deleted_at__isnull=True,
             deleted_at__isnull=True,

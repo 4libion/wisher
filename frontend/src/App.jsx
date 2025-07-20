@@ -1,7 +1,10 @@
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
 import Dashboard from './pages/Dashboard';
+import WishlistDetail from './pages/WishListDetail';
+import PublicWishlistDetail from './pages/PublicWishlistDetail';
 import ProtectedRoute from './components/ProtectedRoute';
 import { UserProvider } from './auth/UserContext';
 
@@ -13,6 +16,7 @@ function App() {
             <Router>
                 <UserProvider>
                     <Routes>
+                        <Route path="/register" element={<RegisterPage />} />
                         <Route path="/login" element={<LoginPage />} />
                         <Route
                             path="/"
@@ -22,6 +26,15 @@ function App() {
                                 </ProtectedRoute>
                             }
                         />
+                        <Route
+                            path="/wishlist/:id"
+                            element={
+                                <ProtectedRoute>
+                                    <WishlistDetail />
+                                </ProtectedRoute>
+                            }
+                        />
+                        <Route path="/wishlist/public/:slug" element={<PublicWishlistDetail />}/>
                     </Routes>
                 </UserProvider>
             </Router>

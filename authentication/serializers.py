@@ -13,6 +13,10 @@ class RegisterSerializer(serializers.ModelSerializer):
         model = User
         fields = ('email', 'password')
 
+    def validate(self, data):
+        print("VALIDATING REGISTER DATA:", data)
+        return data
+
     def create(self, validated_data):
         user = User.objects.create_user(
             email=validated_data.get('email'),

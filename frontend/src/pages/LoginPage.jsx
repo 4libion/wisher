@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from 'react-router-dom';
 import GoogleLoginButton from "../auth/GoogleLoginButton";
 import LoginForm from "../components/LoginForm";
 
@@ -11,6 +12,8 @@ export default function LoginPage() {
             <LoginForm />
             <hr />
             <GoogleLoginButton setUser={setUser} />
+            <br />
+            <p>Don't have an account? <Link to="/register">Register here</Link></p>
         </div>
     );
 }

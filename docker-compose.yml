@@ -23,8 +23,8 @@ services:
       - .:/app
       - static_volume:/app/staticfiles
       - media_volume:/app/media
-    ports:
-      - "8000:8000"
+    expose:
+      - "8000"
     depends_on:
       - db
     env_file:
@@ -35,8 +35,8 @@ services:
     build:
       context: .
       dockerfile: frontend/Dockerfile
-    ports:
-      - "3000:80"
+    expose:
+      - "80"
     depends_on:
       - web
     env_file:

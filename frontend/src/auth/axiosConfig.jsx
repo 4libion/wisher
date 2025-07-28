@@ -4,6 +4,7 @@ import { getAccessToken, getRefreshToken, logoutUser } from './AuthService';
 const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const api = axios.create({ baseURL: backendUrl });
+console.log('Backend URL:', import.meta.env.VITE_BACKEND_URL);
 
 api.interceptors.request.use(config => {
     const token = getAccessToken();
